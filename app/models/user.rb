@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   has_many :experiences
   has_many :projects
   has_many :skills
+  accepts_nested_attributes_for :basic, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
 end
