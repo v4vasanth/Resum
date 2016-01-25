@@ -1,8 +1,9 @@
-= simple_form_for @user, url: {action: "update_education"} do |f|
+= simple_form_for @user, url: update_education_url do |f|
   h3 Education
   #educations
     = f.simple_fields_for :educations do |education|
-       = render 'education_fields', f: education
+    	= render 'education_fields', f: education
+  .link    
     = link_to_add_association 'add education', f, :educations
   = f.submit "submit"
   = link_to "logout", destroy_user_session_path, :method => :delete

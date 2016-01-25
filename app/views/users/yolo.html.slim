@@ -1,4 +1,11 @@
 h1 yolo
 
 p   basic
-	#{@user.education.first.degree}
+		edu
+		#{@user.educations.all}
+		pro
+		#{@user.projects.all}
+		exp
+		#{@user.experiences.all}
+		skills
+		#{@user.skills.all}

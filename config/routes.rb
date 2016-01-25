@@ -11,14 +11,27 @@ Rails.application.routes.draw do
 
   # get ''
 
-  resources :users do
-    resources :basic
-  end
+  # resources :users
+
+  get 'users/basic' => 'users#edit_basic', as: :basic
+  match 'users/update_basic' => 'users#update_basic', as: :update_basic, via: [:post, :patch]
+
+  get 'users/education' => 'users#edit_education', as: :educations
+  patch 'users/update_education' => 'users#update_education', as: :update_education
+
+  get 'users/project' => 'users#edit_project', as: :projects
+  patch 'users/update_project' => 'users#update_project', as: :update_project
+
+  get 'users/experience' => 'users#edit_experience', as: :experiences
+  patch 'users/update_experience' => 'users#update_experience', as: :update_experience
+
+  get 'users/skill' => 'users#edit_skill', as: :skills
+  patch 'users/update_skill' => 'users#update_skill', as: :update_skill
 
 
   devise_scope :user do
    authenticated :user do
-     root :to => 'users#edit'
+     root :to => 'users#edit_basic'
    end
    unauthenticated :user do
      root :to => 'users#index', as: :unauthenticated_root

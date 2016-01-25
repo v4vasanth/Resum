@@ -1,0 +1,11 @@
+= simple_form_for @basic, url: update_basic_url do |f|
+  h3 Basic
+  #basic
+    = f.input :full_name
+  	= f.input :phone
+  	= f.input :linkedin
+  	= f.input :twitter
+  	= f.input :skype
+  	= f.input :personal_website
+  	= f.submit "submit"
+  = link_to "logout", destroy_user_session_path, :method => :delete

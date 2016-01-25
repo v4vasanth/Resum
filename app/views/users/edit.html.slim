@@ -1,7 +1,0 @@
-= simple_form_for @user do |f|
-  h3 Basic
-  #tasks
-    = f.simple_fields_for :basic do |basic|
-      = render 'basic_fields', f: basic
-  = f.submit "submit"
-  = link_to "logout", destroy_user_session_path, :method => :delete

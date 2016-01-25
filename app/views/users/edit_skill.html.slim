@@ -1,0 +1,8 @@
+= simple_form_for @user, url: update_skill_url do |f|
+  h3 Experience
+  #skills
+    = f.simple_fields_for :skills do |skill|
+       = render 'skill_fields', f: skill
+    = link_to_add_association 'add skill', f, :skills
+  = f.submit "submit"
+  = link_to "logout", destroy_user_session_path, :method => :delete

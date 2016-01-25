@@ -1,0 +1,8 @@
+= simple_form_for @user, url: update_project_url do |f|
+  h3 Project
+  #projects
+    = f.simple_fields_for :projects do |project|
+       = render 'project_fields', f: project
+    = link_to_add_association 'add project', f, :projects
+  = f.submit "submit"
+  = link_to "logout", destroy_user_session_path, :method => :delete
