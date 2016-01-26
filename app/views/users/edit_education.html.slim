@@ -1,9 +1,20 @@
-= simple_form_for @user, url: update_education_url do |f|
-  h3 Education
-  #educations
-    = f.simple_fields_for :educations do |education|
-    	= render 'education_fields', f: education
-  .link    
-    = link_to_add_association 'add education', f, :educations
-  = f.submit "submit"
-  = link_to "logout", destroy_user_session_path, :method => :delete
+= render 'header'
+.col-md-4.col-md-offset-4
+	.jumbotron id="user_profile_form"
+		.container
+			= simple_form_for @user, url: update_education_url do |f|
+				h3 #{"Education".pluralize(current_user.educations.all.count)}
+            	span.badge Total #{"Education".pluralize(current_user.educations.all.count)} Count #{current_user.educations.all.count}
+            	br
+            	br
+			  	#educations
+			    	= f.simple_fields_for :educations do |education|
+			    		= render 'education_fields', f: education
+			  	.link    
+			    	= link_to_add_association 'add education', f, :educations
+			    	br
+			    	br
+			  	= f.button :submit, class: "btn btn-primary", value: "Update Education"
+			  	br
+			  	br
+			  	= link_to "logout", destroy_user_session_path, :method => :delete

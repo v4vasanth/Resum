@@ -3,12 +3,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit_basic
-		if current_user.basic.nil?
-			@basic = Basic.new
-			@basic.user_id = current_user.id
-		else
-			@basic = current_user.basic
-		end
+		@basic = current_user.basic || current_user.build_basic
 	end
 
 	def edit_experience
@@ -44,10 +39,8 @@ class UsersController < ApplicationController
 	end
 
 	def update_basic
-		@basic = Basic.new(basic_params)
-		@basic.user_id = current_user.id
-
-		if @basic.save
+		@basic = current_user.basic || current_user.build_basic
+		if @basic.update(basic_params)	
 			redirect_to educations_url
 		else
 			render 'edit_basic'
@@ -88,7 +81,7 @@ class UsersController < ApplicationController
 		@user = current_user
 		# logger.info('--------' + user_params.to_s + '--------')
 		if @user.update(user_params)
-			render 'yolo'
+			redirect_to basic_url
 		else
 			render 'edit_skill'
 		end
@@ -99,10 +92,10 @@ class UsersController < ApplicationController
 
 	def user_params
     	params.require(:user).permit(
-    		educations_attributes: [:degree, :college, :location, :year_of_grad, :gpa, :_destroy, :id],
-    		projects_attributes: [:id, :_destroy, :title, :description],
-    		experiences_attributes: [:id, :_destroy, :company, :location, :duration, :role, :description],
-    		skills_attributes: [:id, :_destroy, :skill])
+    		educations_attributes: [:id, :degree, :college, :location, :year_of_grad, :gpa, :_destroy],
+    		projects_attributes: [:id, :title, :description, :_destroy],
+    		experiences_attributes: [:id, :company, :location, :duration, :role, :description, :_destroy],
+    		skills_attributes: [:id, :skill, :_destroy])
     end
 
     def basic_params

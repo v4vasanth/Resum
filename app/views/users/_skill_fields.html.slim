@@ -1,3 +1,5 @@
 .nested-fields
-  = f.input :skill
+  = f.input :skill, input_html: {class: "form-control"}, label: "Skill", placeholder: "Skill"
   = link_to_remove_association "remove skill", f
+  br
+  br

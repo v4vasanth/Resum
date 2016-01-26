@@ -1,8 +1,19 @@
-= simple_form_for @user, url: update_project_url do |f|
-  h3 Project
-  #projects
-    = f.simple_fields_for :projects do |project|
-       = render 'project_fields', f: project
-    = link_to_add_association 'add project', f, :projects
-  = f.submit "submit"
-  = link_to "logout", destroy_user_session_path, :method => :delete
+= render 'header'
+.col-md-4.col-md-offset-4
+	.jumbotron id="user_profile_form"
+		.container
+			= simple_form_for @user, url: update_project_url do |f|
+				h3 #{"Project".pluralize(current_user.projects.all.count)}
+				span.badge Total #{"Project".pluralize(current_user.projects.all.count)} Count #{current_user.projects.all.count}
+				br
+				br
+			  	#projects
+			    	= f.simple_fields_for :projects do |project|
+			       		= render 'project_fields', f: project
+			    	= link_to_add_association 'add project', f, :projects
+				    br
+				    br
+			  	= f.button :submit, class: "btn btn-primary", value: "Update Project"
+			  	br
+			  	br
+			  	= link_to "logout", destroy_user_session_path, :method => :delete

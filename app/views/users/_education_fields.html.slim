@@ -1,7 +1,9 @@
 .nested-fields
-  = f.input :degree
-  = f.input :college
-  = f.input :location
-  = f.input :year_of_grad
-  = f.input :gpa
+  = f.input :degree, input_html: {class: "form-control"}, label: 'Degree Name', placeholder: "B.E / B.Tech / M.Tech / M.Sc / B.Sc"
+  = f.input :college, input_html: {class: "form-control"}, label: 'Institute Name', placeholder: "Institute Name"
+  = f.input :location, input_html: {class: "form-control"}, label: 'Location', placeholder: "Location"
+  = f.input :year_of_grad, input_html: {class: "form-control"}, label: 'Year of Graduation', placeholder: "Year of Graduation"
+  = f.input :gpa, input_html: {class: "form-control"}, label: 'Percentage (%) / CGPA (10) / GPA (4)', placeholder: "Percentage (%) / CGPA / GPA"
   = link_to_remove_association "remove education", f
+  br
+  br

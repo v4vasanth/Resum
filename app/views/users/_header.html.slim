@@ -1,0 +1,27 @@
+.col-md-2.col-offset-2
+  nav class="navbar navbar-default navbar-fixed-top"
+    div class="container-fluid"
+        div class="navbar-header"
+            a class="navbar-brand" href="#" CV Maker 
+
+        ul class="nav navbar-nav"
+          li
+            = link_to("Basic", basic_path)
+          li
+            = link_to("Education", educations_path)
+          li
+            = link_to("Project", projects_path)
+          li
+            = link_to("Experience", experiences_path)
+          li
+            = link_to("Skill", skills_path)
+
+        ul class="nav navbar-nav navbar-right"
+
+            li
+              = link_to("Edit Profile", edit_user_registration_path)
+        
+            li 
+                = link_to('Logout', destroy_user_session_path, :method => :delete )
+
+br

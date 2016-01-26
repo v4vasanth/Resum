@@ -1,4 +1,6 @@
 .nested-fields
-  = f.input :title
-  = f.input :description
+  = f.input :title, input_html: {class: "form-control"}, label: "Project Title", placeholder: "Project Title"
+  = f.input :description, input_html: {class: "form-control"}, label: "Project Description", placeholder: "Some description about project"
   = link_to_remove_association "remove project", f
+  br
+  br

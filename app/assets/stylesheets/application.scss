@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#devise_registrations_new{
+	border-radius: 10px;
+	margin-top: 20%;
+}
+
+#devise_sessions_new{
+	border-radius: 10px;
+	margin-top: 30%;
+}
+
+#user_profile_form{
+	margin-top: 10%;
+	border-radius: 10px;
+}
