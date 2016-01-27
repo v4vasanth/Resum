@@ -7,41 +7,30 @@ class UsersController < ApplicationController
 	end
 
 	def edit_experience
-		if current_user
-			@user = current_user
-		else
-			redirect_to root
-		end
+		ajax_call_to_form
 	end
 
 	def edit_skill
-		if current_user
-			@user = current_user
-		else
-			redirect_to root
-		end
+		ajax_call_to_form
 	end
 
 	def edit_education
-		if current_user
-			@user = current_user
-		else
-			redirect_to root
-		end
+		ajax_call_to_form
 	end
 
 	def edit_project
-		if current_user
-			@user = current_user
-		else
-			redirect_to root
-		end
+		ajax_call_to_form
 	end
 
 	def update_basic
 		@basic = current_user.basic || current_user.build_basic
+		@user = current_user
 		if @basic.update(basic_params)	
-			redirect_to educations_url
+			@status = "Education"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'edit_education'}
+			end
 		else
 			render 'edit_basic'
 		end
@@ -51,7 +40,11 @@ class UsersController < ApplicationController
 		@user = current_user
 		logger.info('--------' + user_params.to_s + '--------')
 		if @user.update(user_params)
-			redirect_to projects_url
+			@status = "Project"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'edit_education'}
+			end
 		else
 			render 'edit_education'
 		end
@@ -61,7 +54,11 @@ class UsersController < ApplicationController
 		@user = current_user
 		# logger.info('--------' + user_params.to_s + '--------')
 		if @user.update(user_params)
-			redirect_to experiences_url
+			@status = "Experience"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'edit_education'}
+			end
 		else
 			render 'edit_project'
 		end
@@ -71,7 +68,11 @@ class UsersController < ApplicationController
 		@user = current_user
 		# logger.info('--------' + user_params.to_s + '--------')
 		if @user.update(user_params)
-			redirect_to skills_url
+			@status = "Skill"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'edit_education'}
+			end
 		else
 			render 'edit_experience'
 		end
@@ -81,7 +82,11 @@ class UsersController < ApplicationController
 		@user = current_user
 		# logger.info('--------' + user_params.to_s + '--------')
 		if @user.update(user_params)
-			redirect_to basic_url
+			@status = "Basic"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'edit_education'}
+			end
 		else
 			render 'edit_skill'
 		end
@@ -100,5 +105,18 @@ class UsersController < ApplicationController
 
     def basic_params
     	params.require(:basic).permit(:full_name, :phone, :linkedin, :twitter, :skype, :personal_website)
+    end
+
+    def ajax_call_to_form 
+    	@status = params[:data]
+		if current_user
+			@user = current_user
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'edit_education'}
+			end
+		else
+			redirect_to root
+		end
     end
 end

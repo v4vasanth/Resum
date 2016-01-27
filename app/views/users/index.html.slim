@@ -1,4 +1,21 @@
-div class="col-md-4 col-md-offset-4"
-	h1 Create your Resume
+div id="cover-photo" class="jumbotron cover-photo text-center"
+	.col-md-2.col-offset-2
+	  nav class="navbar navbar-inverse navbar-fixed-top"
+	    div class="container-fluid"
+	        div class="navbar-header"
+	            a class="navbar-brand" href="#" CV Builder
 
-	= link_to "To start your journey, click here", new_user_registration_path
+	        ul class="nav navbar-nav navbar-right"
+
+	            li
+	              = link_to("Sign In", user_session_path)
+	        
+	            li 
+	                = link_to('Sign Up', new_user_registration_path)
+
+	div class="landing-page"
+		h1.lead style="color:#fff;" CV Builder
+		p.lead style="color:#fff;" " The best way to predict the future is to create it."
+		p.lead style="color:#fff;" - Abraham Lincoln
+		= link_to "Start your Journey", new_user_registration_path, class: "custom-button blue"
+
