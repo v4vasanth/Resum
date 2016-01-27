@@ -8,13 +8,13 @@
           li
             = link_to("Basic", basic_path)
           li
-            = link_to("Education", educations_path)
+            = link_to("Education", educations_path(data: "Education"), remote: true)
           li
-            = link_to("Project", projects_path)
+            = link_to("Project", projects_path(data: "Project"), remote: true)
           li
-            = link_to("Experience", experiences_path)
+            = link_to("Experience", experiences_path(data: "Experience"), remote: true)
           li
-            = link_to("Skill", skills_path)
+            = link_to("Skill", skills_path(data: "Skill"), remote: true)
 
         ul class="nav navbar-nav navbar-right"
 

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # resources :users
 
-  get 'users/basic' => 'users#edit_basic', as: :basic
+  get '' => 'users#edit_basic', as: :basic
   match 'users/update_basic' => 'users#update_basic', as: :update_basic, via: [:post, :patch]
 
   get 'users/education' => 'users#edit_education', as: :educations

@@ -1,0 +1,15 @@
+// alert("Some nonsense is happening.");
+
+var status = "<%= @status %>";
+if(status === "Education"){
+	$("#ajax_profile_form").html("<%= j render partial: 'edit_education', :locals => {:user => @user} %>")
+}
+else if(status === "Project"){
+	$("#ajax_profile_form").html("<%= j render partial: 'edit_project', :locals => {:user => @user} %>")
+}
+else if(status === "Experience"){
+	$("#ajax_profile_form").html("<%= j render partial: 'edit_experience', :locals => {:user => @user} %>")
+}
+else if(status === "Skill"){
+	$("#ajax_profile_form").html("<%= j render partial: 'edit_skill', :locals => {:user => @user} %>")
+}
