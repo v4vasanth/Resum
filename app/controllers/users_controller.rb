@@ -3,7 +3,16 @@ class UsersController < ApplicationController
 	end
 
 	def edit_basic
-		@basic = current_user.basic || current_user.build_basic
+		if current_user
+			@basic = current_user.basic || current_user.build_basic
+			@user = current_user
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'basic'}
+			end
+		else
+			redirect_to root
+		end
 	end
 
 	def edit_experience
@@ -32,7 +41,11 @@ class UsersController < ApplicationController
 			    format.js { render 'next_page'}
 			end
 		else
-			render 'edit_basic'
+			@status = "Basic"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'basic'}
+			end
 		end
 	end
 
@@ -46,7 +59,11 @@ class UsersController < ApplicationController
 			    format.js { render 'next_page'}
 			end
 		else
-			render 'edit_education'
+			@status = "Education"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'next_page'}
+			end
 		end
 	end
 
@@ -60,7 +77,11 @@ class UsersController < ApplicationController
 			    format.js { render 'next_page'}
 			end
 		else
-			render 'edit_project'
+			@status = "Project"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'next_page'}
+			end
 		end
 	end
 
@@ -74,7 +95,11 @@ class UsersController < ApplicationController
 			    format.js { render 'next_page'}
 			end
 		else
-			render 'edit_experience'
+			@status = "Experience"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'next_page'}
+			end
 		end
 	end
 
@@ -88,7 +113,11 @@ class UsersController < ApplicationController
 			    format.js { render 'next_page'}
 			end
 		else
-			render 'edit_skill'
+			@status = "Skill"
+			respond_to do |format|
+			    format.html {}
+			    format.js { render 'next_page'}
+			end
 		end
 	end
 

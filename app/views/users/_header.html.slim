@@ -6,7 +6,7 @@
 
         ul class="nav navbar-nav"
           li
-            = link_to("Basic", basic_path)
+            = link_to("Basic", basic_path(data: "Basic"), remote: true)
           li
             = link_to("Education", educations_path(data: "Education"), remote: true)
           li
