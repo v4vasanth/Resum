@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 			@status = "Education"
 			respond_to do |format|
 			    format.html {}
-			    format.js { render 'edit_education'}
+			    format.js { render 'next_page'}
 			end
 		else
 			render 'edit_basic'
@@ -38,12 +38,12 @@ class UsersController < ApplicationController
 
 	def update_education
 		@user = current_user
-		logger.info('--------' + user_params.to_s + '--------')
+		# logger.info('--------' + user_params.to_s + '--------')
 		if @user.update(user_params)
 			@status = "Project"
 			respond_to do |format|
 			    format.html {}
-			    format.js { render 'edit_education'}
+			    format.js { render 'next_page'}
 			end
 		else
 			render 'edit_education'
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 			@status = "Experience"
 			respond_to do |format|
 			    format.html {}
-			    format.js { render 'edit_education'}
+			    format.js { render 'next_page'}
 			end
 		else
 			render 'edit_project'
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 			@status = "Skill"
 			respond_to do |format|
 			    format.html {}
-			    format.js { render 'edit_education'}
+			    format.js { render 'next_page'}
 			end
 		else
 			render 'edit_experience'
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
 			@status = "Basic"
 			respond_to do |format|
 			    format.html {}
-			    format.js { render 'edit_education'}
+			    format.js { render 'next_page'}
 			end
 		else
 			render 'edit_skill'
@@ -113,7 +113,7 @@ class UsersController < ApplicationController
 			@user = current_user
 			respond_to do |format|
 			    format.html {}
-			    format.js { render 'edit_education'}
+			    format.js { render 'next_page'}
 			end
 		else
 			redirect_to root
