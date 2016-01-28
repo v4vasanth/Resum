@@ -107,7 +107,7 @@ class UsersController < ApplicationController
 		@user = current_user
 		# logger.info('--------' + user_params.to_s + '--------')
 		if @user.update(user_params)
-			@status = "Basic"
+			@status = "Done"
 			respond_to do |format|
 			    format.html {}
 			    format.js { render 'next_page'}

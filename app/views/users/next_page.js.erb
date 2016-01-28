@@ -10,6 +10,9 @@ else if(status === "Project"){
 else if(status === "Experience"){
 	$("#ajax_profile_form").html("<%= j render partial: 'edit_experience', :locals => {:user => @user} %>")
 }
+else if(status === "Done"){
+	$("#ajax_profile_form").html("<%= j render partial: 'completed_view' %>")
+}
 else if(status === "Skill"){
 	$("#ajax_profile_form").html("<%= j render partial: 'edit_skill', :locals => {:user => @user} %>")
 }
