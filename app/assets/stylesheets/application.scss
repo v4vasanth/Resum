@@ -19,6 +19,15 @@
 
 /*  Devise Sign Up page form style */
 
+body{
+ background: image-url('landing-page-cover.jpg');
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
+ background-color: #464646 ;
+}
+
 #devise_registrations_new{
 	border-radius: 10px;
 	margin-top: 10%;
@@ -44,21 +53,6 @@
 	margin-top: 5%;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 50px;
-}
-
-/* Landing page cover photo */
-
-#cover-photo{
-  background: image-url('landing-page-cover.jpg') no-repeat;
-  background-size: cover;
-  background-position: center;
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  
-  /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 110%;
 }
 
 /* Custom Buttons */

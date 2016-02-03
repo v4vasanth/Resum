@@ -33,7 +33,7 @@ div id="cover-photo" class="jumbotron cover-photo text-center"
             = f.check_box :remember_me
             = f.label :remember_me
         br
-        .actions
-          = f.submit "Log in", class: "btn btn-primary"
+        .actions 
+          = f.submit "Log in", class: "btn btn-primary", id:'login'
         br
       = render "devise/shared/links"
