@@ -10,7 +10,11 @@ RSpec.feature "UserAuthentications", type: :feature do
   scenario "simple flow", js: true do
   	initialize_account
     fill_basic(build(:basic))
-    add_education([build(:education), build(:education)])
+    add_education([build(:education), build(:education), build(:education)])
+    add_project([build(:project), build(:project)])
+    breakpoint
+    add_experience([build(:experience), build(:experience)])
+    add_skill([build(:skill), build(:skill)])
   end
 
 end

@@ -2,16 +2,17 @@
 	.jumbotron id="user_profile_form"
 		.container
 			= simple_form_for @user, url: update_project_url, remote: true do |f|
-				h3 #{"Project".pluralize(current_user.projects.all.count)}
-				span.badge Total #{"Project".pluralize(current_user.projects.all.count)} Count #{current_user.projects.all.count}
-				br
-				br
+				h3 Project 
+            	span.badge Total #{"Project".pluralize(current_user.projects.all.count)} Count #{current_user.projects.all.count}
+            	br
+            	br
 			  	#projects
 			    	= f.simple_fields_for :projects do |project|
-			       		= render 'project_fields', f: project
+			    		= render 'project_fields', f: project
+			  	.link    
 			    	= link_to_add_association 'add project', f, :projects
-				    br
-				    br
+			    	br
+			    	br
 			  	= f.button :submit, class: "btn btn-primary", value: "Update Project"
 			  	br
 			  	br
