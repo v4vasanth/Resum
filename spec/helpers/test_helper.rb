@@ -46,25 +46,55 @@ def add_education(educations)
 	expect(page).to have_content "add project"
 end
 
-# def add_project(projects)
-# 	click_link "Project"
-# 	expect(page).to have_content "add project"
-# 	educations.count.times do |x|
-# 		click_link "add project"
-# 		find("input[id$=_degree]", match: :first)
-# 		all("input[id$=_degree]").last.set(educations[x].degree)
-# 		all("input[id$=_college]").last.set(educations[x].college)
-# 		all("input[id$=_location]").last.set(educations[x].location)
-# 		all("input[id$=_grad]").last.set(educations[x].year_of_grad)
-# 		all("input[id$=_gpa]").last.set(educations[x].gpa)
-# 	end
-# 	click_button "Update Education"
-# 	expect(page).to have_content "add project"
-# end
+def add_project(projects)
+	click_link "Project"
+	expect(page).to have_content "add project"
+	projects.count.times do |x|
+		click_link "add project"
+		find("[id$=_title]", match: :first)
+		all("[id$=_title]").last.set(projects[x].title)
+		all("[id$=_description]").last.set(projects[x].description)
+	end
+	click_button "Update Project"
+	expect(page).to have_content "add experience"
+end
+
+def add_experience(experiences)
+	click_link "Experience"
+	expect(page).to have_content "add experience"
+	experiences.count.times do |x|
+		click_link "add experience"
+		find("input[id$=_company]", match: :first)
+		all("input[id$=_company]").last.set(experiences[x].company)
+		all("input[id$=_location]").last.set(experiences[x].location)
+		all("input[id$=_duration]").last.set(experiences[x].duration)
+		all("input[id$=_role]").last.set(experiences[x].role)
+		all("[id$=_description]").last.set(experiences[x].description)
+	end
+	click_button "Update Experience"
+	expect(page).to have_content "add experience"
+end
+
+def add_skill(skills)
+	click_link "Skill"
+	expect(page).to have_content "add skill"
+	skills.count.times do |x|
+		click_link "add skill"
+		find("[id$=_skill]", match: :first)
+		all("[id$=_skill]").last.set(skills[x].skill)
+	end
+	click_button "Update Skill"
+	expect(page).to have_content "add skill"
+end
 
 
 def initialize_account
 	sign_up
+	logout
+	sign_in("yolo@cadfgg.com", "password")
+end
+
+def breakpoint
 	logout
 	sign_in("yolo@cadfgg.com", "password")
 end
